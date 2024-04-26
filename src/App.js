@@ -14,6 +14,7 @@ import SubCategory from "./Components/pages/subCategory/SubCategory";
 import Product from "./Components/pages/product/Product";
 import AddProduct from "./Components/partial/product/AddProduct";
 import HomeTitle from "./Components/pages/hometitle/HomeTitle";
+import HomeProduct from "./Components/pages/hometitle/HomeProduct";
 
 
 
@@ -67,6 +68,10 @@ function App() {
             <Route
             path="/home-title"
             element={<ProtectedRoute component={<HomeTitle />} />}
+          />
+          <Route
+            path="/home-product/:id"
+            element={<ProtectedRoute component={<HomeProduct />} />}
           />
         </Routes>
       </Router>

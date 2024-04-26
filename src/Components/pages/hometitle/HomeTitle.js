@@ -9,6 +9,7 @@ import UpdateHomeTitleModal from "../../partial/hometitle/UpdateHomeTitle";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 
 function HomeTitle() {
@@ -51,6 +52,22 @@ function HomeTitle() {
             cell: (record) => {
                 const date = record.createAt;
                 return <>{moment(date).format("DD/MM/YYYY")}</>;
+            },
+        },
+        {
+            key: "products",
+            text: "Add products",
+            className: "Action",
+            align: "left",
+            sortable: true,
+            cell: (record) => {
+                return (
+                    <>
+                        <Link to={`/home-product/${record.id}`} className="btn btn-primary">
+                          Add
+                        </Link>
+                    </>
+                );
             },
         },
         {

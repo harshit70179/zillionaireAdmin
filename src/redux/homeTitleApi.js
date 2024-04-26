@@ -1,4 +1,4 @@
-import { addHomeTitleApi, deleteHomeTitleApi, getHomeTitleApi, updateHomeTitleApi, updateHomeTitleStatusApi } from "../Components/constant/Api";
+import { addHomeProduct, addHomeTitleApi, deleteHomeTitleApi, getHomeTitleApi, getHomeTitleByIdApi, updateHomeTitleApi, updateHomeTitleStatusApi } from "../Components/constant/Api";
 import { myApi } from "./api";
 
 export const homeTitleApi = myApi.injectEndpoints({
@@ -48,7 +48,25 @@ export const homeTitleApi = myApi.injectEndpoints({
 
             invalidatesTags: (_) => ["homeTitle","dashboard"],
         }),
+        setProductHomeTitle: builder.mutation({
+            query: (post) => ({
+                url: addHomeProduct,
+                method: "POST",
+                body:post
+            }),
+
+            invalidatesTags: (_) => ["homeTitle"],
+        }),
+        getHomeTitleById: builder.mutation({
+            query: (post) => ({
+                url: getHomeTitleByIdApi + "/" + post.id,
+                method: "Get",
+            }),
+            transformResponse: (response, meta, arg) => {
+                return response.status ? response?.data ?? "" : "";
+            },
+        }),
     }),
 });
 
-export const { useGetHomeTitleQuery, useSetHomeTitleMutation, useUpdateHomeTitleMutation, useUpdateHomeTitleStatusMutation, useDeleteHomeTitleMutation } = homeTitleApi;
+export const { useGetHomeTitleQuery, useSetHomeTitleMutation, useUpdateHomeTitleMutation, useUpdateHomeTitleStatusMutation, useDeleteHomeTitleMutation,useSetProductHomeTitleMutation,useGetHomeTitleByIdMutation } = homeTitleApi;
