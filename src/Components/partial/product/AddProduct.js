@@ -38,6 +38,8 @@ function AddProduct() {
     const [priceData, setPriceData] = useState([])
     const [description, setDescription] = useState("")
     const [descriptionErr, setDescriptionErr] = useState("")
+    const [shortDescription,setShortDescription]=useState("")
+    const [shortDescriptionErr,setShortDescriptionErr]=useState("")
 
     useEffect(() => {
         if (images.length < 1) return;
@@ -49,7 +51,7 @@ function AddProduct() {
     function onImageChange(e) {
         setImages([...e.target.files]);
     }
-    console.log(imageURLS)
+   
     const handleChange = (e) => {
         const { name, value } = e.target
         if (name === "mainCategoryId") {
@@ -75,6 +77,11 @@ function AddProduct() {
             setTitle(value);
             const err = InputValid(name, value);
             setTitleErr(err);
+        }
+        if (name === "shortDescription") {
+            setShortDescription(value);
+            const err = InputValid(name, value);
+            setShortDescriptionErr(err);
         }
         if (name === "finishingCategory") {
             setfinishingCategory(value)
@@ -114,6 +121,10 @@ function AddProduct() {
             toast.error("Please add atleast one image")
             return false
         }
+        if(shortDescription===""){
+            setShortDescription("This field is required")
+            return false
+        }
         if (description === "") {
             setDescriptionErr("This field is required")
             return false
@@ -124,6 +135,7 @@ function AddProduct() {
         formdata.append("description", description);
         formdata.append("category_id", categoryId);
         formdata.append("sub_category_id", subCategoryId);
+        formdata.append("short_description",shortDescription)
         formdata.append("price", JSON.stringify(priceData));
         for (let i = 0; i < images.length; i++) {
             formdata.append("images", images[i]);
@@ -325,6 +337,18 @@ function AddProduct() {
                                     </div>
                                     <div className='col-md-2'>
                                         <Button onClick={addPrice}> Add Price</Button>
+                                    </div>
+                                    <div className='col-12'>
+                                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                            <Form.Label> Short Description <span style={{ color: "red" }}>*</span></Form.Label>
+                                            <Form.Control
+                                                name="shortDescription"
+                                                onChange={handleChange}
+                                                type="text"
+                                                value={shortDescription}
+                                            ></Form.Control>
+                                            <span style={{ color: "red" }}>{shortDescriptionErr}</span>
+                                        </Form.Group>
                                     </div>
                                     <div className='col-md-12'>
                                         <label>Description <span style={{ color: "red" }}>*</span></label>
