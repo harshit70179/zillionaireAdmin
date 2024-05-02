@@ -108,7 +108,7 @@ function Sidebar() {
   return (
     <div id="scrollbar">
       <div className="simplebar-content" style={{ padding: "0px" }}>
-        <div className="container-fluid p-0">
+        <div className="container-fluid p-0" style={{overflow:"auto"}}>
           <ul className="navbar-nav" id="navbar-nav">
             {_renderSideBar(sideMenuList || [])}
             <></>

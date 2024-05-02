@@ -45,3 +45,14 @@ export const deleteHomeTitleApi="/delete-home-title"
 export const updateHomeTitleStatusApi="/update-home-title-staus"
 export const getHomeTitleByIdApi="/get-home-title-by-id"
 export const addHomeProduct="/add-home-product"
+
+//======================== Site Policy=======================
+export const addUpdateSitePolicyApi="/add-update-sitepolicy"
+export const getSitePolicyApi="/get-sitepolicy"
+
+//================= Faq =================== 
+export const addFaqApi="/add-faq"
+export const getFaqApi="/get-faq"
+export const deleteFaqApi="/delete-faq"
+export const updateFaqStatusApi="/update-faq-status"
+export const updateFaqApi="/update-faq"

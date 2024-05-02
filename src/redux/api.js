@@ -13,7 +13,7 @@ export const myApi=createApi({
          return headers
      }
              }),
-    tagTypes: ["banner","role","user","main_category","category","sub_category","homeTitle","dashboard"],
+    tagTypes: ["banner","role","user","main_category","category","sub_category","homeTitle","dashboard","sitePolicy"],
        endpoints:(builder)=>({
        }),
 
