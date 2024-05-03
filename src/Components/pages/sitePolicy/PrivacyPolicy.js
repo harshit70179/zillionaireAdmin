@@ -4,41 +4,40 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { InputValid } from "../../validations/InputValid";
 
-function Tac(props) {
-  const [tac, setTac] = useState("");
-  const [tacErr, setTacErr] = useState("");
+function PrivacyPolicy(props) {
+  const [privacyPolicy, setPrivacyPolicy] = useState("");
+  const [privacyPolicyErr, setPrivacyPolicyErr] = useState("");
   useEffect(() => {
     if (props.data) {
       const propsData = props.data;
-      setTac(propsData.TAC?propsData.TAC:"");
+      setPrivacyPolicy(propsData.PP?propsData.PP:"");
     }
   }, [props.data]);
   const handleSubmit = (e) => {
     e.preventDefault();
-    let checktac = InputValid("tac", tac);
-    if (checktac) {
-      setTacErr(checktac);
-      return false;
-    }
-    const propsData = props.data;
-    const data = {
-      shipping:propsData? propsData.shipping:"",
-      pp:propsData? propsData.pp:"",
-      tac: tac,
-      return_policy:propsData? propsData.return_policy:""
-    };
-    props.onHandleSubmit(data)
+    let checkPP = InputValid("privacyPolicy", privacyPolicy);
+      if(checkPP){
+        setPrivacyPolicyErr(checkPP)
+        return false
+      }
+      const propsData = props.data;
+      const data = {
+        return_policy:propsData? propsData.return_policy:"",
+        shipping:propsData? propsData.shipping:"",
+        tac: propsData ? propsData.TAC : "",
+        pp: privacyPolicy ,
+      };
+      props.onHandleSubmit(data)
   };
-
   return (
     <div className="p-2">
-      <h4 className="mb-3">Terms And Conditions</h4>
+      <h4 className="mb-3">Privacy policy</h4>
       <Form>
         <div className="row">
           <div className="col-12">
             <CKEditor
               editor={ClassicEditor}
-              data={tac}
+              data={privacyPolicy}
               config={{
                 toolbar: [
                   "heading",
@@ -80,10 +79,12 @@ function Tac(props) {
               }}
               onChange={(event, editor) => {
                 const data = editor.getData();
-                setTac(data);
+                setPrivacyPolicy(data);
               }}
             />
-            <span style={{ color: "red" }}>{tacErr}</span>
+             <span style={{ color: "red" }}>
+                {privacyPolicyErr}
+              </span>
           </div>
 
           <div className="col-12">
@@ -102,4 +103,4 @@ function Tac(props) {
   );
 }
 
-export default Tac;
+export default PrivacyPolicy;

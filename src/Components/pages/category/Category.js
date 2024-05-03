@@ -3,15 +3,18 @@ import Header from "../../Widgets/Header";
 import Navbar from "../../Widgets/Navbar";
 import moment from "moment";
 import ReactDatatable from "@mkikets/react-datatable";
-import { useGetCategoryQuery } from "../../../redux/categoryApi";
+import { useGetCategoryQuery, useUpdateCategoryStatusMutation } from "../../../redux/categoryApi";
 import AddCategoryModal from "../../partial/category/AddCategoryModal";
 import UpdateCategoryModal from "../../partial/category/UpdateCategoryModal";
 import { useGetMainCategoryQuery } from "../../../redux/mainCategoryApi";
-
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
+import { toast } from "react-toastify";
 
 function Category() {
     const { data } = useGetCategoryQuery()
-    const { data:mainCategory } = useGetMainCategoryQuery()
+    const [updateCategoryStatus] = useUpdateCategoryStatusMutation();
+    const { data: mainCategory } = useGetMainCategoryQuery()
     const [addModal, setAddModal] = useState(false)
     const [updateModal, setUpdateModal] = useState(false)
     const [currentRecord, setCurrentRecord] = useState({})
@@ -58,21 +61,47 @@ function Category() {
             },
         },
         {
+            key: "status",
+            text: "Status",
+            className: "Action ",
+            align: "left",
+            sortable: true,
+            cell: (record) => {
+                return (
+                    <>
+                        <button
+                            style={{
+                                border: "1px solid #fff",
+                                borderRadius: "3px",
+                                background: record.status === "1" ? "green" : "#d10202",
+                            }}
+                            onClick={() => {
+                                updateAlert(record.id);
+                            }}
+                            title={record.status === "1" ? "Inactive" : "Active"}
+                        >
+                            <i className="fa fa-lock" style={{ color: "#fff" }}></i>
+                        </button>
+                    </>
+                );
+            },
+        },
+        {
             key: "action",
             text: "Action",
             className: "Action",
             align: "left",
             sortable: true,
             cell: (record) => {
-              return (
-                <>
-                  <button onClick={()=>{editFee(record)}}>
-                    <span className="mdi mdi-square-edit-outline"></span>
-                  </button>
-                </>
-              );
+                return (
+                    <>
+                        <button onClick={() => { editFee(record) }}>
+                            <span className="mdi mdi-square-edit-outline"></span>
+                        </button>
+                    </>
+                );
             },
-          },
+        },
 
     ];
     const config = {
@@ -100,14 +129,41 @@ function Category() {
         show_info: true,
     };
 
-    const handleShow=()=>{
+    const handleShow = () => {
         setAddModal(true)
     }
 
-    const editFee=(record)=>{
+    const editFee = (record) => {
         setUpdateModal(true)
         setCurrentRecord(record)
-      }
+    }
+    const updateAlert = (id, show_banner) => {
+        confirmAlert({
+            title: "Confirm to submit",
+            message: "Are you sure to do this.",
+            buttons: [
+                {
+                    label: "Yes",
+                    onClick: () => categoryUpdateStatus(id),
+                },
+                {
+                    label: "No",
+                },
+            ],
+        });
+    };
+
+    const categoryUpdateStatus = async (id) => {
+        let data = {
+            id,
+        };
+        updateCategoryStatus(data).then((result) => {
+            if (result.data.status) {
+                toast.dismiss();
+                toast.success(result.data.message);
+            }
+        });
+    };
 
     return (
         <div id="layout-wrapper">
@@ -131,7 +187,7 @@ function Category() {
                         </div>
 
                         <div className="product-list-outer card p-3 fees_list_page">
-                           
+
                             <ReactDatatable
                                 config={config}
                                 records={data}
@@ -141,8 +197,8 @@ function Category() {
                     </div>
                 </div>
             </div>
-            <AddCategoryModal addModal={addModal} setAddModal={setAddModal} mainCategory={mainCategory}/>
-            <UpdateCategoryModal updateModal={updateModal} setUpdateModal={setUpdateModal} mainCategory={mainCategory} currentRecord={currentRecord}/>
+            <AddCategoryModal addModal={addModal} setAddModal={setAddModal} mainCategory={mainCategory} />
+            <UpdateCategoryModal updateModal={updateModal} setUpdateModal={setUpdateModal} mainCategory={mainCategory} currentRecord={currentRecord} />
         </div>
     )
 }

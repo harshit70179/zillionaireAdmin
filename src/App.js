@@ -17,6 +17,7 @@ import HomeTitle from "./Components/pages/hometitle/HomeTitle";
 import HomeProduct from "./Components/pages/hometitle/HomeProduct";
 import SitePolicy from "./Components/pages/sitePolicy/SitePolicy";
 import Faq from "./Components/pages/faq/Faq";
+import { OrderHistory } from "./Components/pages/order/OrderHistory";
 
 
 
@@ -82,6 +83,10 @@ function App() {
           <Route
             path="/faq"
             element={<ProtectedRoute component={<Faq />} />}
+          />
+           <Route
+            path="/order-history"
+            element={<ProtectedRoute component={<OrderHistory />} />}
           />
         </Routes>
       </Router>

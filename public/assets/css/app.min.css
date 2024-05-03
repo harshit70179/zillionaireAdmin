@@ -4601,3 +4601,20 @@ td button {
 .dash-card button{
   border: 1px solid #cecece;
 }
+.product-item{
+  border-bottom: 2px solid #878585;
+}
+.cart-item{
+  display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+.cart-item img{
+    width: 100px;
+}
+.total div{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}

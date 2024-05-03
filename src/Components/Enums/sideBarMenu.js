@@ -17,7 +17,7 @@ const sideMenuList = [
     id: 3,
     title: "Order History",
     route: "/order-history",
-    icon: "mdi mdi-history",
+    icon: "mdi mdi-cart-variant",
     is_show:'is_dashboard'
   },
   {
@@ -45,14 +45,14 @@ const sideMenuList = [
     id: 7,
     title: "Products",
     route: "/product",
-    icon: "mdi mdi-history",
+    icon: "mdi mdi-package-variant-closed",
     is_show:'is_dashboard'
   },
   {
     id: 8,
     title: "Home Title",
     route: "/home-title",
-    icon: "mdi mdi-history",
+    icon: "mdi mdi-home",
     is_show:'is_dashboard'
   },
   {
@@ -66,7 +66,7 @@ const sideMenuList = [
     id: 10,
     title: "FAQ",
     route: "/faq",
-    icon: "mdi mdi-panorama-variant",
+    icon: "mdi mdi-frequently-asked-questions",
     is_show:'is_banner',
   },
   {

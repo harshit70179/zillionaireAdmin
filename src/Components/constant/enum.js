@@ -48,3 +48,22 @@ export const finishingEnum=[
         value:"14K Solid White Gold",
     },
 ]
+
+export const statusEnum=[
+    {
+        key:"Pending",
+        value:"Pending"
+    },
+    {
+        key:"Processing",
+        value:"Processing"
+    },
+    {
+        key:"Shipping",
+        value:"Shipping"
+    },
+    {
+        key:"Delivered",
+        value:"Delivered"
+    }
+]

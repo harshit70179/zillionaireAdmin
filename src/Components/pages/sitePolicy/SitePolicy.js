@@ -6,6 +6,7 @@ import ReturnPolicy from "./ReturnPolicy";
 import Header from "../../Widgets/Header";
 import Navbar from "../../Widgets/Navbar";
 import { useGetSitePolicyQuery, useSetSitePolicyMutation } from "../../../redux/sitePolicyApi";
+import PrivacyPolicy from "./PrivacyPolicy";
 
 function SitePolicy() {
   const {data}=useGetSitePolicyQuery()
@@ -65,6 +66,7 @@ function SitePolicy() {
                     Shipping
                   </button>
                 </li>
+
                 <li className="nav-item">
                   <button
                     className={`nav-link ${
@@ -78,11 +80,23 @@ function SitePolicy() {
                     Return
                   </button>
                 </li>
+                <li className="nav-item">
+                  <button
+                    className={`nav-link ${activeTab === "pp" ? "active" : ""}`}
+                    aria-current="page"
+                    onClick={() => {
+                      handleTab("pp");
+                    }}
+                  >
+                    Privacy Policy
+                  </button>
+                </li>
               </ul>
               <div className="setting-box mt-3  ">
                  {activeTab==="Return" && <ReturnPolicy data={data} onHandleSubmit={onHandleSubmit}/>}
                  {activeTab==="Shipping" && <Shipping data={data} onHandleSubmit={onHandleSubmit}/>}
                  {activeTab==="Tac" && <Tac data={data} onHandleSubmit={onHandleSubmit}/>}
+                 {activeTab==="pp" && <PrivacyPolicy data={data} onHandleSubmit={onHandleSubmit}/>}
               </div>
             </div>
           </div>

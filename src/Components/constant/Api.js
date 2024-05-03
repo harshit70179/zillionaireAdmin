@@ -21,16 +21,19 @@ export const getAllUserApi="/get-users"
 export const addMainCategoryApi="/insert-main-category"
 export const getMainCategoryApi="/get-main-category"
 export const updateMainCategoryApi="/update-main-category"
+export const updateMainCategoryStatusApi="/update-main-category-status"
 
 //========================== Category ========================
 export const addCategoryApi="/insert-category"
 export const getCategoryApi="/get-category"
 export const updateCategoryApi="/update-category"
+export const updateCategoryStatusApi="/update-category-status"
 
 //====================== Sub Category ===========================
 export const addSubCategoryApi="/insert-sub-category"
 export const getSubCategoryApi="/get-sub-category"
 export const updateSubCategoryApi="/update-sub-category"
+export const updateSubCategoryStatusApi="/update-sub-category-status"
 
 //========================== Products =======================
 export const addProductApi="/insert-product"
@@ -56,3 +59,6 @@ export const getFaqApi="/get-faq"
 export const deleteFaqApi="/delete-faq"
 export const updateFaqStatusApi="/update-faq-status"
 export const updateFaqApi="/update-faq"
+
+//=============== Order ====================
+export const getOrderApi="/get-order"

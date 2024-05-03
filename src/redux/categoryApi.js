@@ -1,4 +1,4 @@
-import { addCategoryApi, getCategoryApi, updateCategoryApi } from "../Components/constant/Api";
+import { addCategoryApi, getCategoryApi, updateCategoryApi, updateCategoryStatusApi } from "../Components/constant/Api";
 import { myApi } from "./api";
 
 export const categoryApi = myApi.injectEndpoints({
@@ -32,7 +32,15 @@ export const categoryApi = myApi.injectEndpoints({
         }),
         invalidatesTags: (_) => ["category"],
       }),
+      updateCategoryStatus: builder.mutation({
+        query: (post) => ({
+          url: updateCategoryStatusApi+"/"+post.id,
+          method: "PUT",
+        }),
+       
+        invalidatesTags: (_) => ["category"],
+      }),
   }),
 });
 
-export const {useGetCategoryQuery,useSetCategoryMutation,useUpdateCategoryMutation } = categoryApi;
+export const {useGetCategoryQuery,useSetCategoryMutation,useUpdateCategoryMutation,useUpdateCategoryStatusMutation } = categoryApi;

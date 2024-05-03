@@ -1,20 +1,24 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Header from "../../Widgets/Header";
 import Navbar from "../../Widgets/Navbar";
 import moment from "moment";
 import ReactDatatable from "@mkikets/react-datatable";
-import { useGetSubCategoryQuery } from "../../../redux/subCategoryApi";
+import { useGetSubCategoryQuery, useUpdateSubCategoryStatusMutation } from "../../../redux/subCategoryApi";
 import AddSubCategoryModal from "../../partial/subCategory/AddSubCategoryModal";
 import UpdateSubCategoryModal from "../../partial/subCategory/UpdateSubCategoryModal";
 import { useGetCategoryQuery } from "../../../redux/categoryApi";
 import { useGetMainCategoryQuery } from "../../../redux/mainCategoryApi";
+import { toast } from "react-toastify";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 function SubCategory() {
     const { data } = useGetSubCategoryQuery()
-    const { data:mainCategory } = useGetMainCategoryQuery()
-    const { data:category } = useGetCategoryQuery()
-    const [addModal,setAddModal]=useState(false)
-    const [updateModal,setUpdateModal]=useState(false)
+    const [updateSubCategoryStatus] = useUpdateSubCategoryStatusMutation();
+    const { data: mainCategory } = useGetMainCategoryQuery()
+    const { data: category } = useGetCategoryQuery()
+    const [addModal, setAddModal] = useState(false)
+    const [updateModal, setUpdateModal] = useState(false)
     const [currentRecord, setCurrentRecord] = useState({})
 
     const columns = [
@@ -59,21 +63,47 @@ function SubCategory() {
             },
         },
         {
+            key: "status",
+            text: "Footer Status",
+            className: "Action ",
+            align: "left",
+            sortable: true,
+            cell: (record) => {
+                return (
+                    <>
+                        <button
+                            style={{
+                                border: "1px solid #fff",
+                                borderRadius: "3px",
+                                background: record.status === "1" ? "green" : "#d10202",
+                            }}
+                            onClick={() => {
+                                updateAlert(record.id);
+                            }}
+                            title={record.status === "1" ? "Inactive" : "Active"}
+                        >
+                            <i className="fa fa-lock" style={{ color: "#fff" }}></i>
+                        </button>
+                    </>
+                );
+            },
+        },
+        {
             key: "action",
             text: "Action",
             className: "Action",
             align: "left",
             sortable: true,
             cell: (record) => {
-              return (
-                <>
-                  <button onClick={()=>{editFee(record)}}>
-                    <span className="mdi mdi-square-edit-outline"></span>
-                  </button>
-                </>
-              );
+                return (
+                    <>
+                        <button onClick={() => { editFee(record) }}>
+                            <span className="mdi mdi-square-edit-outline"></span>
+                        </button>
+                    </>
+                );
             },
-          },
+        },
 
     ];
     const config = {
@@ -101,17 +131,45 @@ function SubCategory() {
         show_info: true,
     };
 
-    const handleShow=()=>{
+    const handleShow = () => {
         setAddModal(true)
     }
 
-    const editFee=(record)=>{
+    const editFee = (record) => {
         setUpdateModal(true)
         setCurrentRecord(record)
-      }
-      
-  return (
-    <div id="layout-wrapper">
+    }
+
+    const updateAlert = (id, show_banner) => {
+        confirmAlert({
+            title: "Confirm to submit",
+            message: "Are you sure to do this.",
+            buttons: [
+                {
+                    label: "Yes",
+                    onClick: () => subCategoryUpdateStatus(id),
+                },
+                {
+                    label: "No",
+                },
+            ],
+        });
+    };
+
+    const subCategoryUpdateStatus = async (id) => {
+        let data = {
+            id,
+        };
+        updateSubCategoryStatus(data).then((result) => {
+            if (result.data.status) {
+                toast.dismiss();
+                toast.success(result.data.message);
+            }
+        });
+    };
+
+    return (
+        <div id="layout-wrapper">
             <Header />
             <Navbar />
             <div className="main-content">
@@ -140,10 +198,10 @@ function SubCategory() {
                     </div>
                 </div>
             </div>
-            <AddSubCategoryModal addModal={addModal} setAddModal={setAddModal} mainCategory={mainCategory} category={category}/>
-            <UpdateSubCategoryModal updateModal={updateModal} setUpdateModal={setUpdateModal} mainCategory={mainCategory} category={category} currentRecord={currentRecord}/>
+            <AddSubCategoryModal addModal={addModal} setAddModal={setAddModal} mainCategory={mainCategory} category={category} />
+            <UpdateSubCategoryModal updateModal={updateModal} setUpdateModal={setUpdateModal} mainCategory={mainCategory} category={category} currentRecord={currentRecord} />
         </div>
-  )
+    )
 }
 
 export default SubCategory

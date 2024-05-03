@@ -25,6 +25,7 @@ function Shipping(props) {
         tac: propsData ? propsData.TAC : "",
         shipping: shipping ,
         return_policy:propsData? propsData.return_policy:"",
+        pp:propsData? propsData.pp:"",
       };
       props.onHandleSubmit(data)
   };

@@ -1,16 +1,20 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Header from "../../Widgets/Header";
 import Navbar from "../../Widgets/Navbar";
 import moment from "moment";
 import ReactDatatable from "@mkikets/react-datatable";
-import { useGetMainCategoryQuery } from "../../../redux/mainCategoryApi";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
+import { useGetMainCategoryQuery, useUpdateMainCategoryStatusMutation } from "../../../redux/mainCategoryApi";
 import AddMainCategoryModal from "../../partial/mainCategory/AddMainCategoryModal";
 import UpdateMainCategoryModal from "../../partial/mainCategory/UpdateMainCategoryModal";
+import { toast } from "react-toastify";
 
 function MainCategory() {
     const { data } = useGetMainCategoryQuery()
-    const [addModal,setAddModal]=useState(false)
-    const [updateModal,setUpdateModal]=useState(false)
+    const [updateMainCategoryStatus] = useUpdateMainCategoryStatusMutation();
+    const [addModal, setAddModal] = useState(false)
+    const [updateModal, setUpdateModal] = useState(false)
     const [currentRecord, setCurrentRecord] = useState({})
 
     const columns = [
@@ -56,22 +60,48 @@ function MainCategory() {
             },
         },
         {
+            key: "status",
+            text: "Status",
+            className: "Action ",
+            align: "left",
+            sortable: true,
+            cell: (record) => {
+                return (
+                    <>
+                        <button
+                            style={{
+                                border: "1px solid #fff",
+                                borderRadius: "3px",
+                                background: record.status === "1" ? "green" : "#d10202",
+                            }}
+                            onClick={() => {
+                                updateAlert(record.id);
+                            }}
+                            title={record.status === "1" ? "Inactive" : "Active"}
+                        >
+                            <i className="fa fa-lock" style={{ color: "#fff" }}></i>
+                        </button>
+                    </>
+                );
+            },
+        },
+        {
             key: "action",
             text: "Action",
             className: "Action",
             align: "left",
             sortable: true,
             cell: (record) => {
-              return (
-                <>
-                  <button onClick={()=>{editFee(record)}}>
-                    <span className="mdi mdi-square-edit-outline"></span>
-                  </button>
-                </>
-              );
+                return (
+                    <>
+                        <button onClick={() => { editFee(record) }}>
+                            <span className="mdi mdi-square-edit-outline"></span>
+                        </button>
+                    </>
+                );
             },
-          },
-  
+        },
+
     ];
     const config = {
         page_size: 10,
@@ -98,14 +128,41 @@ function MainCategory() {
         show_info: true,
     };
 
-    const handleShow=()=>{
+    const handleShow = () => {
         setAddModal(true)
     }
 
-    const editFee=(record)=>{
+    const editFee = (record) => {
         setUpdateModal(true)
         setCurrentRecord(record)
-      }
+    }
+    const updateAlert = (id, show_banner) => {
+        confirmAlert({
+            title: "Confirm to submit",
+            message: "Are you sure to do this.",
+            buttons: [
+                {
+                    label: "Yes",
+                    onClick: () => mainCategoryUpdateStatus(id),
+                },
+                {
+                    label: "No",
+                },
+            ],
+        });
+    };
+
+    const mainCategoryUpdateStatus = async (id) => {
+        let data = {
+            id,
+        };
+        updateMainCategoryStatus(data).then((result) => {
+            if (result.data.status) {
+                toast.dismiss();
+                toast.success(result.data.message);
+            }
+        });
+    };
 
     return (
         <div id="layout-wrapper">
@@ -137,8 +194,8 @@ function MainCategory() {
                     </div>
                 </div>
             </div>
-            <AddMainCategoryModal addModal={addModal} setAddModal={setAddModal}/>
-            <UpdateMainCategoryModal updateModal={updateModal} setUpdateModal={setUpdateModal} currentRecord={currentRecord}/>
+            <AddMainCategoryModal addModal={addModal} setAddModal={setAddModal} />
+            <UpdateMainCategoryModal updateModal={updateModal} setUpdateModal={setUpdateModal} currentRecord={currentRecord} />
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import { addSubCategoryApi, getSubCategoryApi, updateSubCategoryApi } from "../Components/constant/Api";
+import { addSubCategoryApi, getSubCategoryApi, updateSubCategoryApi, updateSubCategoryStatusApi } from "../Components/constant/Api";
 import { myApi } from "./api";
 
 export const subCategoryApi = myApi.injectEndpoints({
@@ -32,7 +32,15 @@ export const subCategoryApi = myApi.injectEndpoints({
         }),
         invalidatesTags: (_) => ["sub_category"],
       }),
+      updateSubCategoryStatus: builder.mutation({
+        query: (post) => ({
+          url: updateSubCategoryStatusApi+"/"+post.id,
+          method: "PUT",
+        }),
+       
+        invalidatesTags: (_) => ["sub_category"],
+      }),
   }),
 });
 
-export const {useGetSubCategoryQuery,useSetSubCategoryMutation,useUpdateSubCategoryMutation } = subCategoryApi;
+export const {useGetSubCategoryQuery,useSetSubCategoryMutation,useUpdateSubCategoryMutation,useUpdateSubCategoryStatusMutation } = subCategoryApi;
