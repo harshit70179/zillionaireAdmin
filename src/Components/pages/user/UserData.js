@@ -66,8 +66,8 @@ export const UserData = () => {
     filename: "Fund Request List",
     no_data_text: "No record found!",
     button: {
-      // print: true,
-      // csv: true,
+      print: true,
+      csv: true,
     },
     language: {
       filter: "Search in records...",

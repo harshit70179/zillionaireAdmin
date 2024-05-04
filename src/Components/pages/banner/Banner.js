@@ -225,9 +225,7 @@ export const Banner = () => {
                 <h2>
                   <b>Banner List</b>
                 </h2>
-              </div>
-
-              <div className="product-list-outer card p-3 fees_list_page">
+                <div className="d-flex">
                 <div className="filter-option">
                    {showBannerEnum.map((list)=>{
                     return (<button className={`btn ${list.value===filterTab?"active-btn":""}`} onClick={()=>{setFilterTab(list.value)}} key={list.value}>{list.key}</button>)
@@ -241,6 +239,11 @@ export const Banner = () => {
                     Add Banner
                   </button>
                 </div>
+                </div>
+              </div>
+
+              <div className="product-list-outer card p-3 fees_list_page">
+               
                 <ReactDatatable
                   config={config}
                   records={filterRecord}

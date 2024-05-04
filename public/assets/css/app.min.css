@@ -1218,7 +1218,9 @@ form label.form-label{    font-weight: 500;}
   overflow: hidden;
   border-radius: 0px;
 }
-
+.navbar-nav{
+  overflow: auto;
+}
 .navbar-menu .navbar-nav .nav-link {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1529,10 +1531,11 @@ a{    text-decoration: none;}
   transition-delay: .1s
 }
 
-
-
 .logo .logo-sm {
   display: none
+}
+.logo img{
+  width: 65%;
 }
 
 .logo-light {
@@ -4394,7 +4397,7 @@ td button {
 }
 .btn_man{ background: #bf854f;}
 .fees_list_btn{    margin: 0 0 -55px auto;    display: block;    position: relative;}
-.fees_list_page .table_filter{    margin-right: 85px!important;}
+/* .fees_list_page .table_filter{    margin-right: 85px!important;} */
 .select_list_page .table_filter{    margin-right: 195px!important;}
 .ransaction_history_modal .col-md-12, .fees_list_page .col-md-12{    overflow: auto;}
 .ransaction_history_modal tr td:last-child{    min-width: 145px;}

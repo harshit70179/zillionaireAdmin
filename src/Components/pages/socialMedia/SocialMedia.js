@@ -3,26 +3,25 @@ import Header from "../../Widgets/Header";
 import Navbar from "../../Widgets/Navbar";
 import moment from "moment";
 import ReactDatatable from "@mkikets/react-datatable";
-import {
-  useGetBannerQuery,
-} from "../../../redux/bannerApi";
 import {socialMediaEnum } from "../../constant/enum";
+import AddSocialModal from "../../partial/socialMedia/AddSocialModal";
+import { useDeleteSocialMediaMutation, useGetSocialMediaQuery } from "../../../redux/socialmediaApi";
+import { toast } from "react-toastify";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
+import UpdateSocialModal from "../../partial/socialMedia/UpdateSocialModal";
 
-export const Banner = () => {
-  const { data: record } = useGetBannerQuery();
-  const [show, setShow] = useState(false);
+export const SocialMedia = () => {
+  const { data: record } = useGetSocialMediaQuery();
+  const [deleteSocialMedia] = useDeleteSocialMediaMutation();
+  const [addModal, setAddModal] = useState(false);
+  const [updateModal, setUpdateModal] = useState(false);
+  const [currentRecord,setCurrentRecord]=useState({})
 
   const handleShow = (id) => {
-    setShow(true);
+    setAddModal(true);
   };
   
-  useEffect(()=>{
-  if(filterTab && record?.length>0){
-     const filterData=record?.filter((list)=>list.show_banner===filterTab)
-     setFilterRecord(filterData)
-  }
-  },[record,filterTab])
-
   const columns = [
     {
       key: "srno.",
@@ -73,7 +72,33 @@ export const Banner = () => {
         return <>{moment(date).format("DD/MM/YYYY")}</>;
       },
     },
+    {
+      key: "action",
+      text: "Action",
+      className: "Action",
+      align: "left",
+      sortable: true,
+      cell: (record) => {
+        return (
+          <>
+            <button
+              onClick={() => deleteAlert(record.id)}
+              title="Delete banner"
+            >
+              <span className="mdi mdi-trash-can-outline"></span>
+            </button>
+            <button
+              onClick={() => edit(record)}
+              title="Update Announcement"
+            >
+              <span className="mdi mdi-square-edit-outline"></span>
+            </button>
+          </>
+        );
+      },
+    },
   ];
+
   const config = {
     page_size: 10,
     length_menu: [10, 20, 50],
@@ -99,6 +124,38 @@ export const Banner = () => {
     show_info: true,
   };
 
+  const edit=(record)=>{
+    setCurrentRecord(record)
+    setUpdateModal(true)
+  }
+
+  const deleteAlert = (id) => {
+    confirmAlert({
+      title: "Confirm to submit",
+      message: "Are you sure to do this.",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => socialMediaDelete(id),
+        },
+        {
+          label: "No",
+        },
+      ],
+    });
+  };
+
+  const socialMediaDelete = async (id) => {
+    let data = {
+      id,
+    };
+    deleteSocialMedia(data).then((result) => {
+      if (result.data.status) {
+        toast.dismiss();
+        toast.success(result.data.message);
+      }
+    });
+  };
 
   return (
     <>
@@ -121,9 +178,7 @@ export const Banner = () => {
                   </button>
                 </div>
               </div>
-
               <div className="product-list-outer card p-3 fees_list_page">
-                
                 <ReactDatatable
                   config={config}
                   records={record}
@@ -131,6 +186,8 @@ export const Banner = () => {
                 />
               </div>
             </div>
+            <AddSocialModal setAddModal={setAddModal} addModal={addModal}/>
+            <UpdateSocialModal setUpdateModal={setUpdateModal} updateModal={updateModal} currentRecord={currentRecord}/>
           </div>
         </div>
       </div>

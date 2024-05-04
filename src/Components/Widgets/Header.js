@@ -73,7 +73,7 @@ function Header() {
                   <span className="d-flex align-items-center">
                     <img
                       className="rounded-circle header-profile-user"
-                      src="../../assets/images/users/avatar-1.png"
+                      src="/assets/images/avatar-1.jpg"
                       alt="Header Avatar"
                     />
                     <span className="text-start ms-xl-2">

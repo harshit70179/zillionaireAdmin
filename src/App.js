@@ -19,6 +19,7 @@ import SitePolicy from "./Components/pages/sitePolicy/SitePolicy";
 import Faq from "./Components/pages/faq/Faq";
 import { OrderHistory } from "./Components/pages/order/OrderHistory";
 import UpdateProduct from "./Components/partial/product/UpdateProduct";
+import { SocialMedia } from "./Components/pages/socialMedia/SocialMedia";
 
 
 
@@ -92,6 +93,10 @@ function App() {
            <Route
             path="/order-history"
             element={<ProtectedRoute component={<OrderHistory />} />}
+          />
+           <Route
+            path="/social-media"
+            element={<ProtectedRoute component={<SocialMedia />} />}
           />
         </Routes>
       </Router>

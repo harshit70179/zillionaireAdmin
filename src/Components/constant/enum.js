@@ -90,4 +90,12 @@ export const socialMediaEnum=[
         key:"Youtube",
         value:"bi bi-youtube"
     },
+    {
+        key:"Skype",
+        value:"bi bi-skype"
+    },
+    {
+        key:"Linkedin",
+        value:"bi bi-linkedin"
+    },
 ]

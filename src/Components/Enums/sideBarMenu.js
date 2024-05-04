@@ -77,6 +77,13 @@ const sideMenuList = [
     is_show:'is_banner',
   },
   {
+    id: 11,
+    title: "Social Media",
+    route: "/social-media",
+    icon: "mdi mdi-panorama-variant",
+    is_show:'is_banner',
+  },
+  {
     id: 12,
     title: "Role Management",
     route: "/role-list",
