@@ -4,7 +4,6 @@ import Button from "react-bootstrap/Button";
 
 function OrderViewModal(props) {
     const [products, setProducts] = useState([])
-     console.log(props?.currentRecord,"props?.currentRecord")
     const handleClose = () => {
         props.setShow(false);
     };
@@ -25,6 +24,17 @@ function OrderViewModal(props) {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+                    <div>
+                        <div className='d-flex justify-content-between'>
+                        <p><b>First Name : </b>{props?.currentRecord?.first_name}</p>
+                        <p><b>Last Name : </b>{props?.currentRecord?.last_name}</p>
+                        </div>
+                        <div className='d-flex justify-content-between'>
+                        <p><b>Email : </b>{props?.currentRecord?.email}</p>
+                        <p><b>Address : </b>{props?.currentRecord?.address}</p>
+                        </div>
+                    </div>
+                    <hr/>
                     <div className='product-item'>
                         {products?.map((list) => {
                             return (

@@ -1,4 +1,4 @@
-import { getOrderApi } from "../Components/constant/Api";
+import { getOrderApi, updateOrderStatusApi } from "../Components/constant/Api";
   import { myApi } from "./api";
   
   export const orderApi = myApi.injectEndpoints({
@@ -11,12 +11,21 @@ import { getOrderApi } from "../Components/constant/Api";
         transformResponse: (response, meta, arg) => {
           return response.status ? response?.data ?? "" : "";
         },
-        providesTags: (_) => ["order"],
+        providesTags: (_) => ["order","dashboard"],
+      }),
+      updateOrderStatus: builder.mutation({
+        query: (post) => ({
+          url:updateOrderStatusApi,
+          method: "PUT",
+          body:post
+        }),
+        invalidatesTags: (_) => ["order","dashboard"],
       }),
     }),
   });
   
   export const {
-     useGetOrderMutation
+     useGetOrderMutation,
+     useUpdateOrderStatusMutation
   } = orderApi;
   

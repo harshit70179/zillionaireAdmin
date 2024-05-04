@@ -3,12 +3,16 @@ import Header from "../../Widgets/Header";
 import Navbar from "../../Widgets/Navbar";
 import moment from "moment";
 import ReactDatatable from "@mkikets/react-datatable";
-import { useGetOrderMutation } from "../../../redux/orderApi";
-import { statusEnum } from "../../constant/enum";
+import { useGetOrderMutation, useUpdateOrderStatusMutation } from "../../../redux/orderApi";
+import { DeliveredEnum, PendingEnum, ProcessingEnum, ShippingEnum, statusEnum } from "../../constant/enum";
 import OrderViewModal from "./OrderViewModal";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
+import { toast } from "react-toastify";
 
 export const OrderHistory = () => {
     const [getOrder, { data: record }] = useGetOrderMutation();
+    const [updateOrderStatus]=useUpdateOrderStatusMutation()
     const [status, setStatus] = useState("Pending")
     const [currectRecord,setCurrectRecord]=useState({})
     const [show,setShow]=useState(false)
@@ -58,14 +62,14 @@ export const OrderHistory = () => {
         },
         {
             key: "total",
-            text: "Total",
+            text: "Total ($)",
             className: "user_name",
             align: "left",
             sortable: true,
         },
         {
             key: "grand_total",
-            text: "Grand Total",
+            text: "Grand Total ($)",
             className: "user_name",
             align: "left",
             sortable: true,
@@ -100,6 +104,18 @@ export const OrderHistory = () => {
                 }}>View</button>;
             },
         },
+        {
+            key: "action",
+            text: "Action",
+            className: "action",
+            align: "left",
+            sortable: true,
+            cell: (record) => {
+                return <button className="btn btn-primary" onClick={()=>{
+                    moveOrderAlert(record.status===PendingEnum?ProcessingEnum:record.status===ProcessingEnum?ShippingEnum:record.status===ShippingEnum?DeliveredEnum:"",record.id)
+                }} disabled={record.status===DeliveredEnum}>{record.status===PendingEnum?"Move Processing":record.status===ProcessingEnum?"Move Shipping":record.status===ShippingEnum?"Move Delivered":"Delivered"}</button>;
+            },
+        },
     ];
 
     const config = {
@@ -130,6 +146,40 @@ export const OrderHistory = () => {
     const showOrder=(record)=>{
         setCurrectRecord(record)
         setShow(true)
+    }
+
+    const moveOrderAlert=(status,id)=>{
+        confirmAlert({
+            title: "Confirm to submit",
+            message: "Are you sure to do this.",
+            buttons: [
+              {
+                label: "Yes",
+                onClick: () => moveOrder(status,id),
+              },
+              {
+                label: "No",
+              },
+            ],
+          });
+    }
+   
+    const moveOrder=(status,id)=>{
+       const data={
+        status,id
+       }
+       updateOrderStatus(data).then((result) => {
+        if (result.data.status) {
+          toast.dismiss();
+          toast.success(result.data.message);
+          getOrder({ status })
+          setStatus(status)
+        }
+        else {
+          toast.dismiss();
+          toast.error(result.data.message);
+        }
+      })
     }
 
     return (

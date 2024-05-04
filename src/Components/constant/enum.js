@@ -67,3 +67,27 @@ export const statusEnum=[
         value:"Delivered"
     }
 ]
+
+export const PendingEnum='Pending'
+export const ProcessingEnum='Processing'
+export const ShippingEnum='Shipping'
+export const DeliveredEnum='Delivered'
+
+export const socialMediaEnum=[
+    {
+        key:"FaceBook",
+        value:"bi bi-facebook"
+    },
+    {
+        key:"Twitter",
+        value:"bi bi-twitter"
+    },
+    {
+        key:"Instagram",
+        value:"bi bi-instagram"
+    },
+    {
+        key:"Youtube",
+        value:"bi bi-youtube"
+    },
+]

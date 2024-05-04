@@ -1,4 +1,4 @@
-import {addProductApi, getProductApi } from "../Components/constant/Api";
+import {addProductApi, getProductApi, getProductById, updateProductApi } from "../Components/constant/Api";
 import { myApi } from "./api";
 
 export const productsApi = myApi.injectEndpoints({
@@ -22,9 +22,17 @@ export const productsApi = myApi.injectEndpoints({
        
         invalidatesTags: (_) => ["products","dashboard"],
       }),
+      updateProduct: builder.mutation({
+        query: (post) => ({
+          url: updateProductApi,
+          method: "PUT",
+          body:post,       
+        }),
+        invalidatesTags: (_) => ["products"],
+      }),
     getProductById: builder.query({
         query: (post) => ({
-          url: getProductApi+"/"+post.id,
+          url: getProductById+"/"+post.id,
           method: "GET",
         }),
         transformResponse: (response, meta, arg) => {
@@ -34,4 +42,4 @@ export const productsApi = myApi.injectEndpoints({
   }),
 });
 
-export const {useGetProductQuery,useSetProductMutation,useGetProductByIdQuery } = productsApi;
+export const {useGetProductQuery,useSetProductMutation,useGetProductByIdQuery,useUpdateProductMutation } = productsApi;

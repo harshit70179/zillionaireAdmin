@@ -18,6 +18,7 @@ import HomeProduct from "./Components/pages/hometitle/HomeProduct";
 import SitePolicy from "./Components/pages/sitePolicy/SitePolicy";
 import Faq from "./Components/pages/faq/Faq";
 import { OrderHistory } from "./Components/pages/order/OrderHistory";
+import UpdateProduct from "./Components/partial/product/UpdateProduct";
 
 
 
@@ -67,6 +68,10 @@ function App() {
           <Route
             path="/add-product"
             element={<ProtectedRoute component={<AddProduct />} />}
+          />
+          <Route
+            path="/update-product/:id"
+            element={<ProtectedRoute component={<UpdateProduct />} />}
           />
             <Route
             path="/home-title"

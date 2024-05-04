@@ -39,6 +39,7 @@ export const updateSubCategoryStatusApi="/update-sub-category-status"
 export const addProductApi="/insert-product"
 export const getProductApi="/get-products"
 export const getProductById="/get-product-by-id"
+export const updateProductApi="/update-products"
 
 //======================= home title ==================
 export const addHomeTitleApi="/insert-home-title"
@@ -62,3 +63,10 @@ export const updateFaqApi="/update-faq"
 
 //=============== Order ====================
 export const getOrderApi="/get-order"
+export const updateOrderStatusApi="/update-order-status"
+
+//================= Social Media =================== 
+export const addSocialMediaApi="/add-socialmedia"
+export const getSocialMediaApi="/get-socialmedia"
+export const deleteSocialMediaApi="/delete-socialmedia"
+export const updateSocialMediaApi="/update-socialmedia"

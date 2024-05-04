@@ -187,7 +187,7 @@ function Dashboard() {
                         <div>
                           <div className="avatar-sm flex-shrink-0">
                             <span className="avatar-title rounded-circle fs-1">
-                              <span className="mdi mdi-account-group"></span>
+                              <span className="mdi mdi-package-variant-closed"></span>
                             </span>
                           </div>
                         </div>
@@ -223,7 +223,7 @@ function Dashboard() {
                         <div>
                           <div className="avatar-sm flex-shrink-0">
                             <span className="avatar-title rounded-circle fs-1">
-                              <span className="mdi mdi-account-group"></span>
+                              <span className="mdi mdi-panorama-variant"></span>
                             </span>
                           </div>
                         </div>
@@ -259,7 +259,7 @@ function Dashboard() {
                         <div>
                           <div className="avatar-sm flex-shrink-0">
                             <span className="avatar-title rounded-circle fs-1">
-                              <span className="mdi mdi-account-group"></span>
+                              <span className="mdi mdi-home"></span>
                             </span>
                           </div>
                         </div>
@@ -268,6 +268,187 @@ function Dashboard() {
                   </Link>
                 </div>
               </div>
+              <div className="col-md-4 col-sm-6 col-12 card-space">
+                <div className="card card-animate">
+                  <Link to="/order-history">
+                    <div className="card-body">
+                      <p className="fw-medium mb-0">Total Order</p>
+                      <div className="d-flex justify-content-between count-outer">
+                        <div>
+                        <h2 className="ff-secondary fw-semibold">
+                            <span className="counter-value" data-target={100}>
+                              {isLoading ? (
+                                <div
+                                  className="spinner-border spinner-border-sm"
+                                  role="status"
+                                >
+                                  <span className="visually-hidden">
+                                    Loading...
+                                  </span>
+                                </div>
+                              ) : (
+                                data?.order
+                              )}
+                            </span>
+                          </h2>
+                        </div>
+                        <div>
+                          <div className="avatar-sm flex-shrink-0">
+                            <span className="avatar-title rounded-circle fs-1">
+                              <span className="mdi mdi-cart-variant"></span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+              <div className="col-md-4 col-sm-6 col-12 card-space">
+                <div className="card card-animate">
+                  <Link to="/order-history">
+                    <div className="card-body">
+                      <p className="fw-medium mb-0">Total Pending Order</p>
+                      <div className="d-flex justify-content-between count-outer">
+                        <div>
+                        <h2 className="ff-secondary fw-semibold">
+                            <span className="counter-value" data-target={100}>
+                              {isLoading ? (
+                                <div
+                                  className="spinner-border spinner-border-sm"
+                                  role="status"
+                                >
+                                  <span className="visually-hidden">
+                                    Loading...
+                                  </span>
+                                </div>
+                              ) : (
+                                data?.pending_order
+                              )}
+                            </span>
+                          </h2>
+                        </div>
+                        <div>
+                          <div className="avatar-sm flex-shrink-0">
+                            <span className="avatar-title rounded-circle fs-1">
+                              <span className="mdi mdi-cart-variant"></span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+              <div className="col-md-4 col-sm-6 col-12 card-space">
+                <div className="card card-animate">
+                  <Link to="/order-history">
+                    <div className="card-body">
+                      <p className="fw-medium mb-0">Total Processing Order</p>
+                      <div className="d-flex justify-content-between count-outer">
+                        <div>
+                        <h2 className="ff-secondary fw-semibold">
+                            <span className="counter-value" data-target={100}>
+                              {isLoading ? (
+                                <div
+                                  className="spinner-border spinner-border-sm"
+                                  role="status"
+                                >
+                                  <span className="visually-hidden">
+                                    Loading...
+                                  </span>
+                                </div>
+                              ) : (
+                                data?.processing_order
+                              )}
+                            </span>
+                          </h2>
+                        </div>
+                        <div>
+                          <div className="avatar-sm flex-shrink-0">
+                            <span className="avatar-title rounded-circle fs-1">
+                              <span className="mdi mdi-cart-variant"></span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+              <div className="col-md-4 col-sm-6 col-12 card-space">
+                <div className="card card-animate">
+                  <Link to="/order-history">
+                    <div className="card-body">
+                      <p className="fw-medium mb-0">Total Shipping Order</p>
+                      <div className="d-flex justify-content-between count-outer">
+                        <div>
+                        <h2 className="ff-secondary fw-semibold">
+                            <span className="counter-value" data-target={100}>
+                              {isLoading ? (
+                                <div
+                                  className="spinner-border spinner-border-sm"
+                                  role="status"
+                                >
+                                  <span className="visually-hidden">
+                                    Loading...
+                                  </span>
+                                </div>
+                              ) : (
+                                data?.shipping_order
+                              )}
+                            </span>
+                          </h2>
+                        </div>
+                        <div>
+                          <div className="avatar-sm flex-shrink-0">
+                            <span className="avatar-title rounded-circle fs-1">
+                              <span className="mdi mdi-cart-variant"></span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+              <div className="col-md-4 col-sm-6 col-12 card-space">
+                <div className="card card-animate">
+                  <Link to="/order-history">
+                    <div className="card-body">
+                      <p className="fw-medium mb-0">Total Delivered Order</p>
+                      <div className="d-flex justify-content-between count-outer">
+                        <div>
+                        <h2 className="ff-secondary fw-semibold">
+                            <span className="counter-value" data-target={100}>
+                              {isLoading ? (
+                                <div
+                                  className="spinner-border spinner-border-sm"
+                                  role="status"
+                                >
+                                  <span className="visually-hidden">
+                                    Loading...
+                                  </span>
+                                </div>
+                              ) : (
+                                data?.delivered_order
+                              )}
+                            </span>
+                          </h2>
+                        </div>
+                        <div>
+                          <div className="avatar-sm flex-shrink-0">
+                            <span className="avatar-title rounded-circle fs-1">
+                              <span className="mdi mdi-cart-variant"></span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>

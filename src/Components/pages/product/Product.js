@@ -50,6 +50,23 @@ function Product() {
                 return <>{moment(date).format("DD/MM/YYYY")}</>;
             },
         },
+        {
+            key: "action",
+            text: "Action",
+            className: "Action",
+            align: "left",
+            sortable: true,
+            cell: (record) => {
+                return (
+                    <>
+                        <Link to={`/update-product/${record.id}`}>
+                            <span className="mdi mdi-square-edit-outline"></span>
+                        </Link>
+                      
+                    </>
+                );
+            },
+        },
     ];
 
     const config = {
