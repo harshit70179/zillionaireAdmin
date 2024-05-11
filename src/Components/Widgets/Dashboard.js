@@ -16,7 +16,7 @@ function Dashboard() {
         <div className="page-content">
           <div className="container-fluid p-0 mt-2">
             <div className="row dashbord_man">
-              <div className="col-md-4 col-sm-6 col-12 card-space">
+              <div className="col-md-3 col-sm-6 col-12 card-space">
                 <div className="card card-animate">
                   <Link to="/users">
                     <div className="card-body">
@@ -52,7 +52,7 @@ function Dashboard() {
                   </Link>
                 </div>
               </div>
-              <div className="col-md-4 col-sm-6 col-12 card-space">
+              <div className="col-md-3 col-sm-6 col-12 card-space">
                 <div className="card card-animate">
                   <Link to="/main-category">
                     <div className="card-body">
@@ -88,7 +88,7 @@ function Dashboard() {
                   </Link>
                 </div>
               </div>
-              <div className="col-md-4 col-sm-6 col-12 card-space">
+              <div className="col-md-3 col-sm-6 col-12 card-space">
                 <div className="card card-animate">
                   <Link to="/category">
                     <div className="card-body">
@@ -124,7 +124,7 @@ function Dashboard() {
                   </Link>
                 </div>
               </div>
-              <div className="col-md-4 col-sm-6 col-12 card-space">
+              <div className="col-md-3 col-sm-6 col-12 card-space">
                 <div className="card card-animate">
                   <Link to="/sub-category">
                     <div className="card-body">
@@ -160,7 +160,7 @@ function Dashboard() {
                   </Link>
                 </div>
               </div>
-              <div className="col-md-4 col-sm-6 col-12 card-space">
+              <div className="col-md-3 col-sm-6 col-12 card-space">
                 <div className="card card-animate">
                   <Link to="/products">
                     <div className="card-body">
@@ -196,7 +196,7 @@ function Dashboard() {
                   </Link>
                 </div>
               </div>
-              <div className="col-md-4 col-sm-6 col-12 card-space">
+              <div className="col-md-3 col-sm-6 col-12 card-space">
                 <div className="card card-animate">
                   <Link to="/banner">
                     <div className="card-body">
@@ -232,7 +232,7 @@ function Dashboard() {
                   </Link>
                 </div>
               </div>
-              <div className="col-md-4 col-sm-6 col-12 card-space">
+              <div className="col-md-3 col-sm-6 col-12 card-space">
                 <div className="card card-animate">
                   <Link to="/home-title">
                     <div className="card-body">
@@ -268,7 +268,7 @@ function Dashboard() {
                   </Link>
                 </div>
               </div>
-              <div className="col-md-4 col-sm-6 col-12 card-space">
+              <div className="col-md-3 col-sm-6 col-12 card-space">
                 <div className="card card-animate">
                   <Link to="/order-history">
                     <div className="card-body">
@@ -304,7 +304,7 @@ function Dashboard() {
                   </Link>
                 </div>
               </div>
-              <div className="col-md-4 col-sm-6 col-12 card-space">
+              <div className="col-md-3 col-sm-6 col-12 card-space">
                 <div className="card card-animate">
                   <Link to="/order-history">
                     <div className="card-body">
@@ -340,7 +340,7 @@ function Dashboard() {
                   </Link>
                 </div>
               </div>
-              <div className="col-md-4 col-sm-6 col-12 card-space">
+              <div className="col-md-3 col-sm-6 col-12 card-space">
                 <div className="card card-animate">
                   <Link to="/order-history">
                     <div className="card-body">
@@ -376,7 +376,7 @@ function Dashboard() {
                   </Link>
                 </div>
               </div>
-              <div className="col-md-4 col-sm-6 col-12 card-space">
+              <div className="col-md-3 col-sm-6 col-12 card-space">
                 <div className="card card-animate">
                   <Link to="/order-history">
                     <div className="card-body">
@@ -412,7 +412,7 @@ function Dashboard() {
                   </Link>
                 </div>
               </div>
-              <div className="col-md-4 col-sm-6 col-12 card-space">
+              <div className="col-md-3 col-sm-6 col-12 card-space">
                 <div className="card card-animate">
                   <Link to="/order-history">
                     <div className="card-body">

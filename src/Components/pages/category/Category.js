@@ -69,10 +69,9 @@ function Category() {
             cell: (record) => {
                 return (
                     <>
-                        <button
+                        <button className="btn"
                             style={{
-                                border: "1px solid #fff",
-                                borderRadius: "3px",
+                                 
                                 background: record.status === "1" ? "green" : "#d10202",
                             }}
                             onClick={() => {
@@ -95,7 +94,7 @@ function Category() {
             cell: (record) => {
                 return (
                     <>
-                        <button onClick={() => { editFee(record) }}>
+                        <button className="btn btn-primary" onClick={() => { editFee(record) }}>
                             <span className="mdi mdi-square-edit-outline"></span>
                         </button>
                     </>

@@ -100,10 +100,9 @@ export const Banner = () => {
       cell: (record) => {
         return (
           <>
-            <button
+            <button className="btn"
               style={{
-                border: "1px solid #fff",
-                borderRadius: "3px",
+                
                 background: record.status === "1" ? "green" : "#d10202",
               }}
               onClick={() => {
@@ -126,7 +125,7 @@ export const Banner = () => {
       cell: (record) => {
         return (
           <Fragment>
-            <Link to="" onClick={() => deleteBanner(record.id)} title="Delete banner">
+            <Link className="btn btn-primary"  to="" onClick={() => deleteBanner(record.id)} title="Delete banner">
               <span className="mdi mdi-trash-can-outline"></span>
             </Link>
           </Fragment>
@@ -232,7 +231,7 @@ export const Banner = () => {
                    })}
                 </div>
                 <div className="add-product-btn ">
-                  <button
+                  <button 
                     onClick={() => handleShow()}
                     className="btn btn-primary fees_list_btn"
                   >

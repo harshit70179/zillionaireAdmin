@@ -69,10 +69,10 @@ function AddHomeTitleModal(props) {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button className="btn btn-primary" variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={onsubmit}>
+                    <Button className="btn btn-primary" variant="primary" onClick={onsubmit}>
                         Save
                     </Button>
                 </Modal.Footer>

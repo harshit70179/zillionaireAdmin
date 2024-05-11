@@ -92,7 +92,7 @@ function SitePolicy() {
                   </button>
                 </li>
               </ul>
-              <div className="setting-box mt-3  ">
+              <div className="setting-box mt-1  ">
                  {activeTab==="Return" && <ReturnPolicy data={data} onHandleSubmit={onHandleSubmit}/>}
                  {activeTab==="Shipping" && <Shipping data={data} onHandleSubmit={onHandleSubmit}/>}
                  {activeTab==="Tac" && <Tac data={data} onHandleSubmit={onHandleSubmit}/>}
