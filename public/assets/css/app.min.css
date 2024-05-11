@@ -7,14 +7,7 @@ body {
 }
 
 .btn-primary {
-  color: #fff !important;
-  background-color: #1d6ee1 !important;
-  border-color: #1d6ee1 !important;
   padding: 8px 10px;
-  transition: all ease-in-out 0.25s;
-  -webkit-transition: all ease-in-out 0.25s;
-  -moz-transition: all ease-in-out 0.25s;
-  -webkit-transition: all ease-in-out 0.25s;
 }
 .login-box{width: 100%;}
 .btn-primary:hover {
@@ -82,7 +75,7 @@ select.form-control {
   --vz-light-rgb: 243, 246, 249;
   --vz-dark: #212529;
   --vz-dark-rgb: 33, 37, 41;
-  --vz-link-color: #885b0c;
+  --vz-link-color: #c38b25;
   --vz-link-hover-color: #d8a914;
   --vz-border-color: #c3c3c3;
   --vz-dropdown-bg: #fff;
@@ -266,14 +259,17 @@ select.form-control {
   white-space: nowrap;
 }
 
-.product-list-outer table th a,
+/* .product-list-outer table th a,
 .product-list-outer table td:last-child a,
 .product-list-outer table td .editlabel {
   color: #1d6ee1;
   font-size: 22px;
   display: block;
-}
-
+} */
+.image-preview{position: relative;}
+.image-preview .btn{    position: absolute;  right: 0;  top: 0;}
+  .image-preview img{border: 1px solid #ccc;
+  border-radius: 5px;}
 .product-list-outer .add-product-btn {
   margin-top: 0;
   float: right;
@@ -1013,17 +1009,18 @@ body th.sortable { color: #2c2c2c;}
   height: 42px;
   width: 42px
 }
-.filter-option .btn{
-  border: 1px solid #000;
+.filter-option .btn {
+  border: 1px solid #d2ac5b;
   margin-right: 15px;
   margin-bottom: 10px;
+  background: #fff;
 }
-
 .filter-option .active-btn{
-  background: #1d6ee1;
+  background: #d2ac5b;
   color: #fff;
-  border: 1px solid #1d6ee1;
+  
 }
+.lastchil_w tr th:last-child{    width: 85px;}
 
 @media (max-width:767.98px) {
   .navbar-header {
@@ -1184,10 +1181,10 @@ body th.sortable { color: #2c2c2c;}
   -webkit-transition: all .1s ease-out;
   transition: all .1s ease-out
 }
-.section-heading h2{    font-size: 1.3rem;}
+.section-heading h2{    font-size: 1.3rem;    font-weight: 400;}
 .section-heading{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between;    align-items: center;
 }
 form label.form-label{    font-weight: 500;}
  
@@ -1201,7 +1198,7 @@ form label.form-label{    font-weight: 500;}
 .navbar-menu {
   width: 230px;
   z-index: 1002;
-  background: #fde8a3bd;
+  background: #000 url(../images/nav-bg.png) left;
   bottom: 0;
   margin-top: 0;
   position: fixed;
@@ -1229,7 +1226,7 @@ form label.form-label{    font-weight: 500;}
   -ms-flex-align: center;
   align-items: center;
   padding: 10px 15px;
-  color: #000;
+  color: #fff;
   font-size: 14px;
 
 }
@@ -1255,7 +1252,8 @@ a{    text-decoration: none;}
 .navbar-menu .navbar-nav .nav-link.active,
 .navbar-menu .navbar-nav .nav-link:hover {
   color: #fff !important;
-  background-color: #885B0C;
+  background: linear-gradient(93deg, #e4c06d, #e1bd6b4d 57.08%, #c9781900);
+  border-right: 2px solid #e4c06d;
 }
 
 .navbar-menu .navbar-nav .nav-link i {
@@ -3865,12 +3863,17 @@ a{    text-decoration: none;}
 }
 
 
- 
-
-.nav-tabs {
-  background: #bdd8ff;
+.nav-tabs .nav-link {
+  border: 1px solid #d2ac5b;
+  margin-right: 15px;
+  margin-bottom: 10px;
+  background: #fff;
 }
-
+.nav-tabs .nav-link.active {
+  background: #d2ac5b;
+  color: #fff;
+}
+ 
 .name a {
   color: #fff;
   text-decoration: underline !important;
@@ -4383,11 +4386,11 @@ display: flex;
   min-height: 245px !important;
 }
 td button {
-    border: none;
-    color: #0055a6;
-    background: transparent;
-    padding: 0;
-    font-size: 20px;
+  border: none;
+  
+  background: transparent;
+  padding: 2px 8px;
+  font-size: 15px;
 }
   .news_detail_img {
     width: 100%;
@@ -4396,7 +4399,7 @@ td button {
     padding: 5px;
 }
 .btn_man{ background: #bf854f;}
-.fees_list_btn{    margin: 0 0 -55px auto;    display: block;    position: relative;}
+/* .fees_list_btn{    margin: 0 0 -55px auto;    display: block;    position: relative;} */
 /* .fees_list_page .table_filter{    margin-right: 85px!important;} */
 .select_list_page .table_filter{    margin-right: 195px!important;}
 .ransaction_history_modal .col-md-12, .fees_list_page .col-md-12{    overflow: auto;}

@@ -333,14 +333,14 @@ function UpdateProduct() {
                   <div className='col-md-12'>
                     <div className='d-flex'>
                       {imageURLS.map((imageSrc, index) => (
-                        <div className="image-preview">
+                        <div className="image-preview me-3 mb-4">
                           <img src={imageSrc} alt="not fount" width={"250px"} key={index} />
                           <button onClick={() => { removeImage(index) }} className="btn btn-danger btn-sm" type='button'><i className="fa fa-trash"></i></button>
                         </div>
                       ))}
                       {dbImage?.map((list, index) => {
                         return (
-                          <div className="image-preview">
+                          <div className="image-preview me-3 mb-4">
                             <img src={list} alt="not fount" width={"250px"} key={index} />
                             <button onClick={() => { removeDbImage(index) }} class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
                           </div>
@@ -478,7 +478,7 @@ function UpdateProduct() {
                     <p className="text-danger">{descriptionErr}</p>
                   </div>
                   {priceData.length > 0 && <div className='col-md-12'>
-                    <table className='w-100'>
+                    <table className='w-100 table table-bordered table-striped'>
                       <thead>
                         <tr>
                           <th>Finishing</th>

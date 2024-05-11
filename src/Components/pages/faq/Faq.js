@@ -65,10 +65,9 @@ function Faq() {
       cell: (record) => {
         return (
           <>
-            <button
+            <button className="btn"
               style={{
-                border: "1px solid #fff",
-                borderRadius: "3px",
+                
                 background: record.status === "1" ? "green" : "#d10202",
               }}
               onClick={() => {
@@ -91,13 +90,13 @@ function Faq() {
       cell: (record) => {
         return (
           <>
-            <button
+            <button className="btn btn-primary me-2"
               onClick={() => deleteAlert(record.id)}
               title="Delete banner"
             >
               <span className="mdi mdi-trash-can-outline"></span>
             </button>
-            <button
+            <button className="btn btn-primary"
               onClick={() => edit(record)}
               title="Update Announcement"
             >
@@ -215,7 +214,7 @@ function Faq() {
               </div>
             </div>
 
-            <div className="product-list-outer card p-3">
+            <div className="product-list-outer card p-3 lastchil_w">
               
               <ReactDatatable
                 config={config}

@@ -59,7 +59,7 @@ function Product() {
             cell: (record) => {
                 return (
                     <>
-                        <Link to={`/update-product/${record.id}`}>
+                        <Link className="btn btn-primary" to={`/update-product/${record.id}`}>
                             <span className="mdi mdi-square-edit-outline"></span>
                         </Link>
                       
@@ -106,7 +106,7 @@ function Product() {
                                 <b>Product List</b>
                             </h2>
                             <div className="add-product-btn ">
-                                <Link
+                                <Link 
                                     to="/add-product"
                                     className="btn btn-primary fees_list_btn"
                                 >

@@ -81,13 +81,13 @@ export const SocialMedia = () => {
       cell: (record) => {
         return (
           <>
-            <button
+            <button className="btn btn-primary me-2"
               onClick={() => deleteAlert(record.id)}
               title="Delete banner"
             >
               <span className="mdi mdi-trash-can-outline"></span>
             </button>
-            <button
+            <button className="btn btn-primary"
               onClick={() => edit(record)}
               title="Update Announcement"
             >
