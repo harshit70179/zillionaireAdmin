@@ -11,8 +11,6 @@ function Header() {
   const { logout } = useAuth();
   const [show, setShow] = useState(false);
 
-
- 
   const adminlogout = () => {
     localStorage.clear();
     logout();
