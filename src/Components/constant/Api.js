@@ -8,7 +8,7 @@ export const isAdminLogin=baseUrl+"/is-admin-login"
 //====================== Dashboard ===========================
 export const getDashboardApi="/get-dashboard"
 
-// ===================== Promotion Banner =========================
+// ===================== Banner =========================
 export const addBannerApi="/insert-banner"
 export const updateBannerApi="/update-banner"
 export const deleteBannerApi="/delete-banner"
@@ -70,3 +70,9 @@ export const addSocialMediaApi="/add-socialmedia"
 export const getSocialMediaApi="/get-socialmedia"
 export const deleteSocialMediaApi="/delete-socialmedia"
 export const updateSocialMediaApi="/update-socialmedia"
+
+// ===================== Explore =========================
+export const addExploreApi="/insert-explore"
+export const updateExploreApi="/update-explore"
+export const deleteExploreApi="/delete-explore"
+export const getExploreApi="/get-explore"

@@ -37,6 +37,7 @@ function OrderViewModal(props) {
                     <hr/>
                     <div className='product-item'>
                         {products?.map((list) => {
+                             let discount=list?.save>0?(list.price)-((list.price*list.save)/100):list.price
                             return (
                                 <div className='cart-item' key={list.id}>
                                     <div><img src={list?.images} alt=''/></div>
@@ -50,11 +51,11 @@ function OrderViewModal(props) {
                                     </div>
                                     <div>
                                     <p>Rate</p>
-                                        <p>${list.price}</p>
+                                        <p>${discount}</p>{list?.save>0?<del>${list?.price}</del>:""}
                                     </div>
                                     <div>
                                         <p>Total</p>
-                                        <p>${list.price * list.quantity}</p>
+                                        <p>${discount * list.quantity}</p>
                                         
                                     </div>
                                 </div>
@@ -72,7 +73,12 @@ function OrderViewModal(props) {
                             <p>Grand Total</p>
                             <p>${props?.currentRecord?.grand_total}</p>
                         </div>
+                        
                     </div>
+                    {props.currentRecord?.gift_note?<div>
+                        <h5>Gift Note</h5>
+                        <p>{props.currentRecord?.gift_note}</p>
+                    </div>:""}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>

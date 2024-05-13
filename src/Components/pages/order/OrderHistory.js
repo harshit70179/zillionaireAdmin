@@ -4,7 +4,7 @@ import Navbar from "../../Widgets/Navbar";
 import moment from "moment";
 import ReactDatatable from "@mkikets/react-datatable";
 import { useGetOrderMutation, useUpdateOrderStatusMutation } from "../../../redux/orderApi";
-import { DeliveredEnum, PendingEnum, ProcessingEnum, ShippingEnum, statusEnum } from "../../constant/enum";
+import { DeliveredEnum, PendingEnum, ProcessingEnum, ShippingEnum, activeEnum, statusEnum } from "../../constant/enum";
 import OrderViewModal from "./OrderViewModal";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
@@ -81,6 +81,22 @@ export const OrderHistory = () => {
             align: "left",
             sortable: true,
         },
+        {
+            key: "gift_status",
+            text: "Gift Status",
+            className: "gift_status",
+            align: "left",
+            sortable: true,
+            cell: (record) => {
+              return (
+                <>
+                {record.gift_status===activeEnum? <img style={{ height: "50px" }} src="/assets/images/gift.jpg" alt="" />:""}
+                 
+                </>
+              );
+            },
+          },
+      
         {
             key: "createdAt",
             text: "Date",

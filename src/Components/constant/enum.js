@@ -8,7 +8,7 @@ export const bannerType=[{
 }]
 
 export const topEnum='1'
-
+export const activeEnum='1'
 export const showBannerEnum=[{
     key:"Top",
     value:'1'
