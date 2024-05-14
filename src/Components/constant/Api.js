@@ -76,3 +76,10 @@ export const addExploreApi="/insert-explore"
 export const updateExploreApi="/update-explore"
 export const deleteExploreApi="/delete-explore"
 export const getExploreApi="/get-explore"
+
+//==================== Role Management ==============================
+export const getRoleApi="/get-role"
+export const addRoleApi="/add-role"
+export const deleteRoleApi="/delete-role"
+export const getRoleByIdApi="/get-role-by-id"
+export const updateRoleApi="/update-role"
