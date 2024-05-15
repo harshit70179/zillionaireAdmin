@@ -324,7 +324,7 @@ select.form-control {
 /*my-css(15-07-2022)*/
 /*login-page-css-start*/
 .login {
-  background: url(../images/login-background.jpg) no-repeat bottom right;
+  background: url(../images/login-background.jpg) no-repeat top left;
   background-size: cover;
   justify-content: center;
   min-height: 100vh;
@@ -4410,6 +4410,9 @@ td button {
   color: #fff;
 }
 .ransaction_history_modal .table{ background: #fff;}
+.popop_pro_img{    width: 100px;}
+
+
 @media (min-width: 992px){
 .ransaction_history_modal .modal-dialog {
     max-width: 900px;

@@ -36,7 +36,8 @@ function OrderViewModal(props) {
                     </div>
                     <hr/>
                     <div className='product-item'>
-                    <table>
+                    <table className='table'>
+
                             <thead>
                                 <tr>
                                     <th>Image</th>
@@ -51,7 +52,8 @@ function OrderViewModal(props) {
                              let discount=list?.save>0?(list.price)-((list.price*list.save)/100):list.price
                             return (
                                 <tr>
-                                    <td><img src={list?.images} alt='' className='img-fluid'/></td>
+                                    <td><img src={list?.images} alt='' className='popop_pro_img'/></td>
+
                                     <td> <h6>{list.title}</h6>
                                         <p>{list.finishing} / {list.size}</p></td>
                                     <td>{list.quantity}</td>
