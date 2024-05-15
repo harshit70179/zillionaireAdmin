@@ -37,6 +37,7 @@ function OrderViewModal(props) {
                     <hr/>
                     <div className='product-item'>
                     <table className='table'>
+
                             <thead>
                                 <tr>
                                     <th>Image</th>
@@ -52,6 +53,7 @@ function OrderViewModal(props) {
                             return (
                                 <tr>
                                     <td><img src={list?.images} alt='' className='popop_pro_img'/></td>
+
                                     <td> <h6>{list.title}</h6>
                                         <p>{list.finishing} / {list.size}</p></td>
                                     <td>{list.quantity}</td>
