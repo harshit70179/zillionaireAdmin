@@ -43,48 +43,55 @@ const sideMenuList = [
   },
   {
     id: 7,
+    title: "Explore",
+    route: "/explore",
+    icon: "mdi mdi-history",
+    is_show:'is_dashboard'
+  },
+  {
+    id: 8,
     title: "Products",
     route: "/product",
     icon: "mdi mdi-package-variant-closed",
     is_show:'is_dashboard'
   },
   {
-    id: 8,
+    id: 9,
     title: "Home Title",
     route: "/home-title",
     icon: "mdi mdi-home",
     is_show:'is_dashboard'
   },
   {
-    id: 9,
+    id: 10,
     title: "Banner",
     route: "/banner",
     icon: "mdi mdi-panorama-variant",
     is_show:'is_banner',
   },
   {
-    id: 10,
+    id: 11,
     title: "FAQ",
     route: "/faq",
     icon: "mdi mdi-frequently-asked-questions",
     is_show:'is_banner',
   },
   {
-    id: 11,
+    id: 12,
     title: "Site Policy",
     route: "/site-policy",
     icon: "mdi mdi-panorama-variant",
     is_show:'is_banner',
   },
   {
-    id: 11,
+    id: 13,
     title: "Social Media",
     route: "/social-media",
     icon: "mdi mdi-panorama-variant",
     is_show:'is_banner',
   },
   {
-    id: 12,
+    id: 14,
     title: "Role Management",
     route: "/role-list",
     icon: "mdi mdi-face-agent",

@@ -64,7 +64,7 @@ function HomeTitle() {
                 return (
                     <>
                         <Link to={`/home-product/${record.id}`} className="btn btn-primary">
-                          Add
+                          Move Product
                         </Link>
                     </>
                 );

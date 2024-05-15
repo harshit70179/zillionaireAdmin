@@ -33,6 +33,7 @@ function AddProduct() {
     const [size, setSize] = useState("")
     const [price, setPrice] = useState("")
     const [priceErr, setPriceErr] = useState("")
+    const [save,setSave]=useState(0)
     const [images, setImages] = useState([]);
     const [imageURLS, setImageURLs] = useState([]);
     const [priceData, setPriceData] = useState([])
@@ -88,6 +89,9 @@ function AddProduct() {
         }
         if (name === "size") {
             setSize(value)
+        }
+        if (name === "save") {
+            setSave(value)
         }
         if (name === "price") {
             setPrice(value)
@@ -167,11 +171,13 @@ function AddProduct() {
         let data = {
             size: size,
             price: price,
-            finishingCategory: finishingCategory
+            finishingCategory: finishingCategory,
+            save:save?save:0
         }
         setPriceData([...priceData, data])
         setPrice("")
         setSize("")
+        setSave(0)
         setfinishingCategory("")
     }
   
@@ -304,7 +310,7 @@ function AddProduct() {
                                             </Form.Select>
                                         </Form.Group>
                                     </div>
-                                    <div className='col-md-3'>
+                                    <div className='col-md-2'>
                                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                             <Form.Label>Size</Form.Label>
                                             <Form.Select
@@ -323,7 +329,7 @@ function AddProduct() {
                                             </Form.Select>
                                         </Form.Group>
                                     </div>
-                                    <div className='col-md-3'>
+                                    <div className='col-md-2'>
                                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                             <Form.Label> Price ($) <span style={{ color: "red" }}>*</span></Form.Label>
                                             <Form.Control
@@ -333,6 +339,18 @@ function AddProduct() {
                                                 value={price}
                                             ></Form.Control>
                                             <span style={{ color: "red" }}>{priceErr}</span>
+                                        </Form.Group>
+                                    </div>
+                                    <div className='col-md-2'>
+                                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                            <Form.Label> Save (%)</Form.Label>
+                                            <Form.Control
+                                                name="save"
+                                                onChange={handleChange}
+                                                type="number"
+                                                value={save}
+                                            ></Form.Control>
+                                           
                                         </Form.Group>
                                     </div>
                                     <div className='col-md-2'>
@@ -414,12 +432,13 @@ function AddProduct() {
                                         <p className="text-danger">{descriptionErr}</p>
                                     </div>
                                     {priceData.length > 0 && <div className='col-md-12'>
-                                        <table className='w-100'>
+                                        <table className='w-100 table table-bordered table-striped'>
                                             <thead>
                                                 <tr>
                                                     <th>Finishing</th>
                                                     <th>Size</th>
                                                     <th>Price</th>
+                                                    <th>Save</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -430,6 +449,7 @@ function AddProduct() {
                                                             <td>{list.finishingCategory}</td>
                                                             <td>{list.size}</td>
                                                             <td>{list.price}</td>
+                                                            <td>{list.save}</td>
                                                             <td>  <button onClick={() => { removePriceData(index) }} className="btn btn-danger btn-sm" type='button'><i className="fa fa-trash"></i></button></td>
                                                         </tr>
                                                     )

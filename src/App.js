@@ -20,6 +20,7 @@ import Faq from "./Components/pages/faq/Faq";
 import { OrderHistory } from "./Components/pages/order/OrderHistory";
 import UpdateProduct from "./Components/partial/product/UpdateProduct";
 import { SocialMedia } from "./Components/pages/socialMedia/SocialMedia";
+import { Explore } from "./Components/pages/explore/Explore";
 
 
 
@@ -61,6 +62,10 @@ function App() {
           <Route
             path="/sub-category"
             element={<ProtectedRoute component={<SubCategory />} />}
+          />
+           <Route
+            path="/explore"
+            element={<ProtectedRoute component={<Explore />} />}
           />
          <Route
             path="/product"

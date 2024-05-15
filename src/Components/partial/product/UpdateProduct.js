@@ -35,6 +35,7 @@ function UpdateProduct() {
   const [size, setSize] = useState("")
   const [price, setPrice] = useState("")
   const [priceErr, setPriceErr] = useState("")
+  const [save,setSave]=useState(0)
   const [images, setImages] = useState([]);
   const [imageURLS, setImageURLs] = useState([]);
   const [priceData, setPriceData] = useState([])
@@ -134,6 +135,9 @@ function UpdateProduct() {
     if (name === "size") {
       setSize(value)
     }
+    if (name === "save") {
+      setSave(value)
+    }
     if (name === "price") {
       setPrice(value)
       if (value === "") {
@@ -216,11 +220,13 @@ function UpdateProduct() {
     let data = {
       size: size,
       price: price,
-      finishingCategory: finishingCategory
+      finishingCategory: finishingCategory,
+      save:save
     }
     setPriceData([...priceData, data])
     setPrice("")
     setSize("")
+    setSave(0)
     setfinishingCategory("")
   }
 
@@ -245,7 +251,7 @@ function UpdateProduct() {
           <div className="container-fluid">
             <div className="section-heading">
               <h2>
-                <b>Add Product</b>
+                <b>Update Product</b>
               </h2>
             </div>
             <div className="product-list-outer card p-3 fees_list_page">
@@ -368,7 +374,7 @@ function UpdateProduct() {
                       </Form.Select>
                     </Form.Group>
                   </div>
-                  <div className='col-md-3'>
+                  <div className='col-md-2'>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                       <Form.Label>Size</Form.Label>
                       <Form.Select
@@ -387,7 +393,7 @@ function UpdateProduct() {
                       </Form.Select>
                     </Form.Group>
                   </div>
-                  <div className='col-md-3'>
+                  <div className='col-md-2'>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                       <Form.Label> Price ($) <span style={{ color: "red" }}>*</span></Form.Label>
                       <Form.Control
@@ -397,6 +403,17 @@ function UpdateProduct() {
                         value={price}
                       ></Form.Control>
                       <span style={{ color: "red" }}>{priceErr}</span>
+                    </Form.Group>
+                  </div>
+                  <div className='col-md-2'>
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                      <Form.Label> Save (%)</Form.Label>
+                      <Form.Control
+                        name="save"
+                        onChange={handleChange}
+                        type="number"
+                        value={save}
+                      ></Form.Control>
                     </Form.Group>
                   </div>
                   <div className='col-md-2'>
@@ -484,6 +501,7 @@ function UpdateProduct() {
                           <th>Finishing</th>
                           <th>Size</th>
                           <th>Price</th>
+                          <th>Save</th>
                           <th>Action</th>
                         </tr>
                       </thead>
@@ -494,6 +512,7 @@ function UpdateProduct() {
                               <td>{list.finishingCategory}</td>
                               <td>{list.size}</td>
                               <td>{list.price}</td>
+                              <td>{list.save}</td>
                               <td>  <button onClick={() => { removePriceData(index) }} className="btn btn-danger btn-sm" type='button'><i className="fa fa-trash"></i></button></td>
                             </tr>
                           )
@@ -503,7 +522,7 @@ function UpdateProduct() {
                     </table>
                   </div>}
                   <div>
-                    <Button type='submit' className='btn btn-primary'>Add Product</Button>
+                    <Button type='submit' className='btn btn-primary'>Update Product</Button>
                   </div>
                 </div>
               </Form>

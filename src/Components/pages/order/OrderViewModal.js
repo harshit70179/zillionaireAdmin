@@ -16,7 +16,7 @@ function OrderViewModal(props) {
 
     return (
         <div>
-            <Modal show={props.show} onHide={handleClose}>
+            <Modal show={props.show} onHide={handleClose} dialogClassName="modal-lg">
                 <Modal.Header closeButton>
                     {" "}
                     <Modal.Title style={{ color: "black" }}>
@@ -36,30 +36,33 @@ function OrderViewModal(props) {
                     </div>
                     <hr/>
                     <div className='product-item'>
-                        {products?.map((list) => {
+                    <table className='table'>
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Title</th>
+                                    <th>Quantity</th>
+                                    <th>Rate</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {products?.map((list) => {
+                             let discount=list?.save>0?(list.price)-((list.price*list.save)/100):list.price
                             return (
-                                <div className='cart-item' key={list.id}>
-                                    <div><img src={list?.images} alt=''/></div>
-                                    <div>
-                                        <h6>{list.title}</h6>
-                                        <p>{list.finishing} / {list.size}</p>
-                                    </div>
-                                    <div>
-                                    <p>Quantity</p>
-                                        <p>{list.quantity}</p>
-                                    </div>
-                                    <div>
-                                    <p>Rate</p>
-                                        <p>${list.price}</p>
-                                    </div>
-                                    <div>
-                                        <p>Total</p>
-                                        <p>${list.price * list.quantity}</p>
-                                        
-                                    </div>
-                                </div>
+                                <tr>
+                                    <td><img src={list?.images} alt='' className='popop_pro_img'/></td>
+                                    <td> <h6>{list.title}</h6>
+                                        <p>{list.finishing} / {list.size}</p></td>
+                                    <td>{list.quantity}</td>
+                                    <td><span className='me-3'>${discount}</span>{list?.save>0?<del>${list?.price}</del>:""}</td>
+                                    <td>${discount * list.quantity}</td>
+                                </tr>
+                               
                             )
                         })}
+                            </tbody>
+                        </table>
 
                     </div>
                     <div className='total'>
@@ -72,7 +75,12 @@ function OrderViewModal(props) {
                             <p>Grand Total</p>
                             <p>${props?.currentRecord?.grand_total}</p>
                         </div>
+                        
                     </div>
+                    {props.currentRecord?.gift_note?<div>
+                        <h5>Gift Note</h5>
+                        <p>{props.currentRecord?.gift_note}</p>
+                    </div>:""}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
